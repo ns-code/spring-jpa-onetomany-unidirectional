@@ -18,13 +18,13 @@ public class ContactController {
     }
 
     @PostMapping("/{customerId}")
-    public ResponseEntity<Long> addContact(@PathVariable Long customerId, @RequestBody ContactDTO contact) {
+    public ResponseEntity<Long> addContact(@PathVariable("customerId") Long customerId, @RequestBody ContactDTO contact) {
         Long createdContactId = contactService.createContact(customerId, contact);
         return new ResponseEntity<>(createdContactId, HttpStatus.CREATED);
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<Void> updateContact(@PathVariable Long customerId, @RequestBody ContactDTO contact) {
+    public ResponseEntity<Void> updateContact(@PathVariable("customerId") Long customerId, @RequestBody ContactDTO contact) {
         contactService.updateContact(customerId, contact);
         return ResponseEntity.noContent().build();
     }    

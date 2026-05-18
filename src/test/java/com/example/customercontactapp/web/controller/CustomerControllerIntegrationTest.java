@@ -122,44 +122,4 @@ class CustomerControllerIntegrationTest {
         List<Contact> contacts2 = contactRepository.findByCustomerId(newCustomerId);
         assertThat(contacts2).hasSize(1);
     }    
-
-/*     @Test
-    void testGetAllCustomers() throws Exception {
-        customerRepository.save(new Customer("John Doe"));
-        customerRepository.save(new Customer("Jane Smith"));
-
-        mockMvc.perform(get("/api/customers"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", hasSize(2)))
-                .andExpect(jsonPath("$[0].name").value("John Doe"))
-                .andExpect(jsonPath("$[1].name").value("Jane Smith"));
-    }
-
-    @Test
-    void testGetCustomerById() throws Exception {
-        Customer customer = customerRepository.save(new Customer("John Doe"));
-
-        mockMvc.perform(get("/api/customers/{id}", customer.getId()))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(customer.getId()))
-                .andExpect(jsonPath("$.name").value("John Doe"));
-    }
-
-    @Test
-    void testGetCustomerById_NotFound() throws Exception {
-        mockMvc.perform(get("/api/customers/{id}", 999L))
-                .andExpect(status().isNotFound());
-    }
-
-
-    @Test
-    void testUpdateCustomer_NotFound() throws Exception {
-        Customer customer = new Customer("John Doe");
-
-        mockMvc.perform(put("/api/customers/{id}", 999L)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(customer)))
-                .andExpect(status().isNotFound());
-    }
- */
 }
