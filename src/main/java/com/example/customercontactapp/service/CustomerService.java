@@ -60,7 +60,7 @@ public class CustomerService {
     @Transactional
     public void updateCustomer(Long id, CustomerDTO customerDTO) {
         Customer customer = customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found with id: " + id));
+                .orElseThrow(() -> new NotFoundException("Customer not found with id: " + id));
         customerDTO.setId(id);
         Customer customerEntity = customerMapper.toEntity(customerDTO);
         customerRepository.save(customerEntity);
@@ -97,7 +97,8 @@ public class CustomerService {
                 .orElseThrow(() -> new NotFoundException("Customer not found with id: " + id));
 
         List<ContactDTO> contactDTOs = contactMapper.toDtoList(contactRepository.findByCustomerId(id));
-        CustomerDTO customerDTO = customerMapper.toDTO(customer, contactDTOs);
+        CustomerDTO customerDTO = customerMapper.toDTO(customer);
+        customerDTO.setContacts(contactDTOs);
         customerDTO.setContacts(contactDTOs);
         return customerDTO;
     }
@@ -116,9 +117,6 @@ public class CustomerService {
         // Optional<Customer> customer =
         customerRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Customer not found with id: " + id));
-        // if (customer.isEmpty()) {
-        // throw new NotFoundException("Customer not found with id: " + id);
-        // }
         contactRepository.deleteByCustomerId(id);
         customerRepository.deleteById(id);
     }

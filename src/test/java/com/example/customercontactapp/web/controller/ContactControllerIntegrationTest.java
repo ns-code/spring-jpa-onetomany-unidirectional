@@ -27,7 +27,10 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
-@SpringBootTest
+@SpringBootTest(
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+    classes = {com.example.customercontactapp.config.AppConfig.class}
+)
 @AutoConfigureMockMvc
 @Transactional
 @ActiveProfiles({"test"})

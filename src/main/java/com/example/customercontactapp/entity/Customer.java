@@ -18,18 +18,6 @@ public class Customer {
     @Column(nullable = false)
     private String name;
 
-    // @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    // @JoinColumn(name = "customer_id", nullable = false)
-    // private List<Contact> contacts = new ArrayList<>();
-
-    // public List<Contact> getContacts() {
-    //     return contacts;
-    // }
-
-    // public void setContacts(List<Contact> contacts) {
-    //     this.contacts = contacts;
-    // }
-
     public Long getId() {
         return id;
     }
@@ -51,11 +39,7 @@ public class Customer {
 
     public Customer(String name) {
         this.name = name;
-    }
-
-    // public void addContact(Contact contact) {
-    //     this.contacts.add(contact);
-    // }    
+    }  
 
     @Override
     public boolean equals(Object o) {

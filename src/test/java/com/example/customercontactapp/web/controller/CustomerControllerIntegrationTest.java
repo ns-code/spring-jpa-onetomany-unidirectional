@@ -24,7 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
-@SpringBootTest
+@SpringBootTest(
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+    classes = {com.example.customercontactapp.config.AppConfig.class}
+)
 @AutoConfigureMockMvc
 @Transactional
 @ActiveProfiles({"test"})
