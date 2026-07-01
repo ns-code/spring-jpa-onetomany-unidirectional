@@ -25,6 +25,9 @@ http://localhost:8080/h2-console
 
 ## Related Projects
 
+OneToMany uni-directional relationship example:<br>
+https://github.com/ns-code/spring-jpa-onetomany-bidirectional
+
 ManyToMany relationships modeled using Bi-Directional OneToMany relationships:<br>
 https://github.com/ns-code/spring-jpa-courseenrollments
 
